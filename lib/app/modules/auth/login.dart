@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:todo_task/app/modules/auth/forget.dart';
 import 'package:todo_task/app/modules/auth/register.dart';
 import 'package:todo_task/app/widgets/constants.dart';
 import 'package:todo_task/app/widgets/loginlogo.dart';
@@ -73,7 +73,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(ForgotPasswordScreen());
+                        },
                         child: Text(
                           "Forget Password?",
                           style: TextStyle(color: Colors.black),
@@ -99,8 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               FocusManager.instance.primaryFocus?.unfocus();
                               if (formKey.currentState!.validate()) {
                                 final result = await authcontroller.signIn(
-                                    emailController.text,
-                                    passController.text);
+                                    emailController.text, passController.text);
                                 if (!result) {
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(const SnackBar(
@@ -112,8 +113,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             },
                             child: const Text(
                               'Continue',
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 20),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
                             ),
                           ),
                   );
