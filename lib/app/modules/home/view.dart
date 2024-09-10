@@ -8,6 +8,7 @@ import 'package:todo_task/app/modules/home/widgets/add_card.dart';
 import 'package:todo_task/app/modules/home/widgets/add_dialog.dart';
 import 'package:todo_task/app/modules/home/widgets/settings.dart';
 import 'package:todo_task/app/modules/home/widgets/task_card.dart';
+import 'package:todo_task/app/widgets/profilebutton.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
@@ -16,7 +17,13 @@ class HomePage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.person)),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 12, top: 12),
+          child: ProfileButton(
+              imagePath:
+                  'https://media.licdn.com/dms/image/D4E03AQEYFh_cteiGHw/profile-displayphoto-shrink_200_200/0/1675684299451?e=2147483647&v=beta&t=v--ECS2UF_XDYsH7WWSV4IM_IElPKfVgR6Br8umkCxw',
+              destinationPage: SettingsPage()),
+        ),
         centerTitle: true,
         title: Text(
           "Categories",
@@ -25,15 +32,9 @@ class HomePage extends GetView<HomeController> {
         actions: [
           IconButton(
               onPressed: () {
-                Get.to(SettingsPage());
+                // Get.to(SettingsPage());
               },
-              icon: Icon(Icons.settings)),
-          // IconButton(
-          //   onPressed: () {
-          //     authcontroller.signOut();
-          //   },
-          //   icon: const Icon(Icons.logout),
-          // ),
+              icon: Icon(Icons.search)),
         ],
       ),
       body: SafeArea(

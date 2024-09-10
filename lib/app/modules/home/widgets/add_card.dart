@@ -24,8 +24,8 @@ class AddCard extends StatelessWidget {
         onTap: () async {
           await Get.defaultDialog(
             radius: 5,
-            contentPadding: EdgeInsets.zero, // Remove padding around content
-            title: '', // Title text without additional decoration
+            contentPadding: EdgeInsets.zero, 
+            title: '', 
             content: SingleChildScrollView(
               child: Form(
                 key: homectrl.formKey,
@@ -34,14 +34,12 @@ class AddCard extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5.0),
                       child: Obx(() {
-                        // Determine how many icons to display (one or all)
                         final displayedIcons = homectrl.showAllIcons.value
                             ? icons
                             : [icons[homectrl.chipIndex.value]];
 
                         return Column(
                           children: [
-                            // Display the icons as ChoiceChips
                             Wrap(
                               spacing: 2.0.wp,
                               children: displayedIcons.map((e) {
@@ -59,8 +57,6 @@ class AddCard extends StatelessWidget {
                                 );
                               }).toList(),
                             ),
-
-                            // IconButton to show/hide all icons
                             IconButton(
                               onPressed: homectrl.toggleShowAllIcons,
                               icon: Icon(
@@ -74,7 +70,6 @@ class AddCard extends StatelessWidget {
                         );
                       }),
                     ),
-                    // Task Title Input Field
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 3.0.wp),
                       child: TextFormField(
@@ -95,7 +90,6 @@ class AddCard extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    // Confirm Button to Add Task
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
@@ -109,8 +103,6 @@ class AddCard extends StatelessWidget {
                               icons[homectrl.chipIndex.value].icon!.codePoint;
                           String color =
                               icons[homectrl.chipIndex.value].color!.toHex();
-
-                          // Create a new task
                           var task = Task(
                             title: homectrl.editController.text,
                             icon: icon,
@@ -118,8 +110,6 @@ class AddCard extends StatelessWidget {
                           );
 
                           Get.back();
-
-                          // Add the task and show success/error message
                           homectrl.addTask(task)
                               ? EasyLoading.showSuccess('Create Success')
                               : EasyLoading.showError('Duplicated Task');
@@ -135,7 +125,6 @@ class AddCard extends StatelessWidget {
           homectrl.editController.clear();
           homectrl.changeChipIndex(0);
         },
-        // Dotted Border + Add Icon
         child: DottedBorder(
           color: Colors.grey[400]!,
           dashPattern: const [8, 4],
