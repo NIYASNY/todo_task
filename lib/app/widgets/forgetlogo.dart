@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todo_task/app/modules/auth/login.dart';
 
-class RegisterLogo extends StatelessWidget {
-  const RegisterLogo({Key? key}) : super(key: key);
+class Forgetlogo extends StatelessWidget {
+  const Forgetlogo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +18,14 @@ class RegisterLogo extends StatelessWidget {
               child: IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () {
-                  Get.to(LoginScreen());
+                  Get.back();
                 },
               ),
             ),
             Align(
               alignment: Alignment.center,
               child: const Text(
-                'Create an account',
+                'Forget Password',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
             ),
